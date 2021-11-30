@@ -6,39 +6,30 @@ const app = express();
 
 const PORT = 3000;
 
-let posts = [
-    {
-        id: "dslfgjslk",
-        title: "Mural de teste",
-        description: "Descrição teste"
-    },
-    {
-        id: "slkfjlkj",
-        title: "Mural teste 2",
-        description: "Descrição teste 2"
-    }
-];
+const posts = require("./model/posts");
 
 app.get("/all", (req, res) => {
-    res.send(JSON.stringify(posts));
+    res.send(JSON.stringify(posts.getAll()));
 });
 
 app.post("/new", bodyParser.json(), (req, res) => {
-    let id = generateID();
-
     let title = req.body.title;
 
     let description = req.body.description;
 
-    posts.push({ id, title, description });
+    posts.newPost(title, description);
 
     res.send("Post adicionado");
+});
+
+app.delete("/delete/:index", bodyParser.json(), (req, res) => {
+    let index = req.params.index;
+
+    posts.deletePost(index);
+
+    res.send("Post deletado");
 });
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);
 });
-
-let generateID = () => {
-    return Math.random().toString(26).substr(2, 9);
-};
