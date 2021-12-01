@@ -17,7 +17,15 @@ module.exports = {
         });
     },
     deletePost(id) {
-        delete this.posts[id];
+        this.posts.forEach(element => {
+            let arrayId = element.id;
+
+            let index = arrayId.indexOf();
+
+            if (arrayId == id) {
+                this.posts.splice(index, 1);
+            }
+        });
     }
 };
 
