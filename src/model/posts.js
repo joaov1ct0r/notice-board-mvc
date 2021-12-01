@@ -6,15 +6,13 @@ module.exports = {
             description: "Descrição teste"
         }
     ],
+
     getAll() {
         return this.posts;
     },
+
     newPost(title, description) {
-        this.posts.push({
-            id: generateID(),
-            title: title,
-            description: description
-        });
+        this.posts.push({ id: generateID(), title, description });
     },
     deletePost(id) {
         delete this.posts[id];
