@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updatePosts();
 });
 
-const salvarButton = document.getElementById("salvarButton");
-
 function updatePosts() {
     const url = "http://localhost:3000/api/all";
 
@@ -31,12 +29,38 @@ function updatePosts() {
                 postElements += postElement;
             });
 
-            let post = document.getElementById("posts");
+            let divPosts = document.getElementById("posts");
 
-            post.innerHTML = postElements;
+            divPosts.innerHTML = postElements;
         });
 }
 
-function newPost() {}
+const salvarButton = document.getElementById("salvarButton");
 
 salvarButton.addEventListener("click", newPost);
+
+function newPost() {
+    let title = document.getElementById("title").value;
+
+    let description = document.getElementById("desc").value;
+
+    let post = { title, description };
+
+    const url = "http://localhost:3000/api/new";
+
+    const options = {
+        method: "POST",
+        body: JSON.stringify(post),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    };
+
+    fetch(url, options).then(res => {
+        console.log(res);
+
+        updatePosts();
+
+        document.getElementById("title").value = "";
+
+        document.getElementById("desc").value = "";
+    });
+}

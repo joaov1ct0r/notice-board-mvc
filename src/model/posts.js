@@ -12,7 +12,11 @@ module.exports = {
     },
 
     newPost(title, description) {
-        this.posts.push({ id: generateID(), title, description });
+        this.posts.push({
+            id: generateID(),
+            title,
+            description
+        });
     },
     deletePost(id) {
         delete this.posts[id];
