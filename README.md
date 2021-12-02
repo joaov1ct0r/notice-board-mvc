@@ -24,3 +24,5 @@
 <p>Mural de avisos criado em Javascript, NodeJS(Express), HTML e Bootstrap, com 2 inputs um para criar o titulo do aviso e outro para a descrição, quando os input são preenchidos e o botão salvar é pressionado ele faz uma requisição para a api.js enviando os dados, a api então envia os dados para um array em posts.js usando o metodo posts.newPost e o metodo newPost cria um novo objeto com um id gerado a partir da função generateID, um title e um description, quando finalizado a função updatePosts do script.js é executada, essa função faz um fetch com metodo get para a api.js retornando todos os objetos do array posts e criando então uma nova div no index.html para cada objeto.</p>
 
 <h2>Pictures</h2>
+
+![muralAvisos](https://user-images.githubusercontent.com/79015823/144490406-5d378b76-edf9-4f22-906e-1b6c73068c0d.jpg)
