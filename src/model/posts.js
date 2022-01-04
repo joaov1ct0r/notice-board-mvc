@@ -34,13 +34,23 @@ let newPost = (title, description, callback) => {
     });
 };
 
+let deletePost = (index, callback) => {
+    let SQL = `DELETE FROM avisos WHERE avisosID = ?`;
+
+    db.query(SQL, index, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        callback(result);
+    });
+};
+
 module.exports = {
     getAll,
 
     newPost,
-    deletePost(id) {
-        delete this.posts[id];
-    }
+
+    deletePost
 };
 
 let generateID = () => {
