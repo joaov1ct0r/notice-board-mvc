@@ -19,7 +19,7 @@ function updatePosts() {
             posts.forEach(post => {
                 let postElement = `<div id="${post.avisosID}" class="card mb-5">
                                               <h5 class="card-title">${post.avisosTitulo}</h5>
-                                              ${post.avisosDesc}
+                                              <p>${post.avisosDesc}</p>
                                               <button>Editar</button><button>Remover</button>
                                    </div>`;
 
@@ -93,34 +93,36 @@ divPosts.addEventListener('click', event => {
 
             title.type = 'text';
 
-            title.value = postDiv.avisosTitulo;
+            let h5 = postDiv.children[0].textContent;
 
-            divPosts.insertBefore(title, postDiv.lastChild);
+            title.value = h5;
 
-            let desc = document.createElement('input');
+            divPosts.insertBefore(title, postDiv);
 
-            desc.type = 'text';
+            let description = document.createElement('input');
 
-            desc.value = postDiv.avisosDesc;
+            description.type = 'text';
 
-            divPosts.insertBefore(desc, postDiv.lastChild);
+            description.value = postDiv.children[1].textContent;
+
+            divPosts.insertBefore(description, postDiv);
 
             button.textContent = 'Salvar';
 
             button.addEventListener('click', () => {
-                editPost();
+                editPost(postDiv.id, title.value, description.value);
             });
 
-            function editPost() {
-                const url = `http://localhost:3001/api/edit/${postDiv.avisosID}`;
+            function editPost(index, title, description) {
+                const url = `http://localhost:3001/api/edit/${index}`;
 
-                const title = title.value;
+                // const title = title.value;
 
-                const desc = desc.value;
+                // const desc = desc.value;
 
                 const options = {
                     method: 'PUT',
-                    body: JSON.stringify({ title }),
+                    body: JSON.stringify({ title, description }),
                     headers: {
                         'Content-type': 'application/json; charset=UTF-8'
                     }
@@ -129,7 +131,7 @@ divPosts.addEventListener('click', event => {
                 fetch(url, options).then(res => {
                     console.log(res);
 
-                    updateToDo();
+                    updatePosts();
                 });
             }
         }
