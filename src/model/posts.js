@@ -34,6 +34,21 @@ let newPost = (title, description, callback) => {
     });
 };
 
+// MODIFICA UM AVISO
+let changePost = (index, title, description, callback) => {
+    let SQL = `UPDATE avisos SET avisosTitulo = ?, avisosDesc = ? WHERE avisosID = ?`;
+
+    let params = [title, description, index];
+
+    db.query(SQL, params, (err, result) => {
+        if (err) {
+            throw err;
+        }
+
+        callback(result);
+    });
+};
+
 let deletePost = (index, callback) => {
     let SQL = `DELETE FROM avisos WHERE avisosID = ?`;
 
@@ -51,8 +66,4 @@ module.exports = {
     newPost,
 
     deletePost
-};
-
-let generateID = () => {
-    return Math.random().toString(26).substr(2, 9);
 };
