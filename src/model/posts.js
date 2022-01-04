@@ -7,19 +7,19 @@ let db = mysql.createConnection({
     database: 'muralAvisos'
 });
 
-let getAll = (callback) => {
-    let SQL = `SELECT * FROM avisos`
+let getAll = callback => {
+    let SQL = `SELECT * FROM avisos`;
 
     db.query(SQL, (err, result) => {
-        if(err) {
+        if (err) {
             throw err;
         }
         callback(result);
-    })
-}
+    });
+};
 
 module.exports = {
-    ,
+    getAll,
 
     newPost(title, description) {
         this.posts.push({
