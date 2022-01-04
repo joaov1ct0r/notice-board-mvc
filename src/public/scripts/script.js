@@ -16,18 +16,13 @@ function updatePosts() {
 
             let posts = JSON.parse(JSON.stringify(data));
 
-            // if ("undefined" || "null" === typeof posts) {
-            //     let divPosts = document.getElementById("posts");
-
-            //     divPosts.innerHTML = "";
-            // }
             posts.forEach(post => {
-                let postElement = `<div id="${post.id}" class="card mb-5">
+                let postElement = `<div id="${post.avisosID}" class="card mb-5">
                                           <div class="card-header">
-                                              <h5 class="card-title">${post.title}</h5>
+                                              <h5 class="card-title">${post.avisosTitulo}</h5>
                                           </div>
                                           <div class="card-body">
-                                              <div class="card-text">${post.description}</div>
+                                              <div class="card-text">${post.avisosDesc}</div>
                                           </div>
                                       </div>`;
 
