@@ -22,7 +22,22 @@ router.post('/new', bodyParser.json(), (req, res) => {
     let request = db.newPost(title, description, function (result) {
         console.log(result);
 
-        res.send('Post Adicionado com sucesso');
+        res.send('Aviso Adicionado com sucesso');
+    });
+});
+
+// EDITA UM AVISO
+router.put('/edit/:index', bodyParser.json(), (req, res) => {
+    let { index } = req.params;
+
+    let { title } = req.body;
+
+    let { description } = req.body;
+
+    let request = db.changePost(index, title, description, function (result) {
+        console.log(result);
+
+        res.send('Aviso deletado com sucesso');
     });
 });
 
@@ -33,7 +48,7 @@ router.delete('/delete/:index', bodyParser.json(), (req, res) => {
     let request = db.deletePost(index, function (result) {
         console.log(result);
 
-        res.send('Post deletado com sucesso');
+        res.send('Aviso deletado com sucesso');
     });
 });
 module.exports = router;

@@ -65,5 +65,7 @@ module.exports = {
 
     newPost,
 
+    changePost,
+
     deletePost
 };
