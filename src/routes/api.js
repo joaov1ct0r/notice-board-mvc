@@ -4,11 +4,13 @@ const router = express.Router();
 
 const bodyParser = require('body-parser');
 
-const posts = require('../model/posts');
+const db = require('../model/posts.js');
 
 // RETORNA TODOS OS AVISOS
 router.get('/all', (req, res) => {
-    res.send(JSON.stringify(posts.getAll()));
+    let request = db.getAll(function (result) {
+        res.send(JSON.stringify(result));
+    });
 });
 
 // INSERE UM NOVO AVISO
@@ -17,7 +19,7 @@ router.post('/new', bodyParser.json(), (req, res) => {
 
     let description = req.body.description;
 
-    posts.newPost(title, description);
+    db.newPost(title, description);
 
     res.send('Post adicionado');
 });
@@ -26,7 +28,7 @@ router.post('/new', bodyParser.json(), (req, res) => {
 router.delete('/delete/:index', bodyParser.json(), (req, res) => {
     let index = req.params.index;
 
-    posts.deletePost(index);
+    db.deletePost(index);
 
     res.send('Post deletado');
 });
