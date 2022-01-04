@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     updatePosts();
 });
 
 function updatePosts() {
-    const url = "http://localhost:3000/api/all";
+    const url = 'http://localhost:3001/api/all';
 
     fetch(url)
         .then(res => {
@@ -12,7 +12,7 @@ function updatePosts() {
             return data;
         })
         .then(data => {
-            let postElements = "";
+            let postElements = '';
 
             let posts = JSON.parse(JSON.stringify(data));
 
@@ -34,29 +34,29 @@ function updatePosts() {
                 postElements += postElement;
             });
 
-            let divPosts = document.getElementById("posts");
+            let divPosts = document.getElementById('posts');
 
             divPosts.innerHTML = postElements;
         });
 }
 
-const salvarButton = document.getElementById("salvarButton");
+const salvarButton = document.getElementById('salvarButton');
 
-salvarButton.addEventListener("click", newPost);
+salvarButton.addEventListener('click', newPost);
 
 function newPost() {
-    let title = document.getElementById("title").value;
+    let title = document.getElementById('title').value;
 
-    let description = document.getElementById("desc").value;
+    let description = document.getElementById('desc').value;
 
     let post = { title, description };
 
-    const url = "http://localhost:3000/api/new";
+    const url = 'http://localhost:3000/api/new';
 
     const options = {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(post),
-        headers: { "Content-type": "application/json; charset=UTF-8" }
+        headers: { 'Content-type': 'application/json; charset=UTF-8' }
     };
 
     fetch(url, options).then(res => {
@@ -64,8 +64,8 @@ function newPost() {
 
         updatePosts();
 
-        document.getElementById("title").value = "";
+        document.getElementById('title').value = '';
 
-        document.getElementById("desc").value = "";
+        document.getElementById('desc').value = '';
     });
 }
