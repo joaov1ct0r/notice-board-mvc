@@ -15,13 +15,15 @@ router.get('/all', (req, res) => {
 
 // INSERE UM NOVO AVISO
 router.post('/new', bodyParser.json(), (req, res) => {
-    let title = req.body.title;
+    let { title } = req.body;
 
-    let description = req.body.description;
+    let { description } = req.body;
 
-    db.newPost(title, description);
+    let request = db.newPost(title, description, function (result) {
+        console.log(result);
 
-    res.send('Post adicionado');
+        res.send('Post Adicionado com sucesso');
+    });
 });
 
 // DELETA UM AVISO

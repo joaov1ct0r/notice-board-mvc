@@ -1,5 +1,4 @@
 const mysql = require('mysql2');
-const { param } = require('../routes/api');
 
 let db = mysql.createConnection({
     host: '127.0.0.1',
@@ -20,8 +19,9 @@ let getAll = callback => {
     });
 };
 
+// INSERE NOVO AVISO
 let newPost = (title, description, callback) => {
-    let SQL = `INSERT INTO avisos (avisosTitulo, avisosDesc) VALUES (?)`;
+    let SQL = `INSERT INTO avisos (avisosTitulo, avisosDesc) VALUES (?, ?)`;
 
     let params = [title, description];
 
