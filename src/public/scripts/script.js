@@ -46,7 +46,7 @@ function newPost() {
 
     let post = { title, description };
 
-    const url = 'http://localhost:3000/api/new';
+    const url = 'http://localhost:3001/api/new';
 
     const options = {
         method: 'POST',
