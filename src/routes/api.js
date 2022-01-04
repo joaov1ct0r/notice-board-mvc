@@ -28,11 +28,12 @@ router.post('/new', bodyParser.json(), (req, res) => {
 
 // DELETA UM AVISO
 router.delete('/delete/:index', bodyParser.json(), (req, res) => {
-    let index = req.params.index;
+    let { index } = req.params;
 
-    db.deletePost(index);
+    let request = db.deletePost(index, function (result) {
+        console.log(result);
 
-    res.send('Post deletado');
+        res.send('Post deletado com sucesso');
+    });
 });
-
 module.exports = router;
