@@ -1,4 +1,5 @@
 const mysql = require('mysql2');
+const { param } = require('../routes/api');
 
 let db = mysql.createConnection({
     host: '127.0.0.1',
@@ -7,6 +8,7 @@ let db = mysql.createConnection({
     database: 'muralAvisos'
 });
 
+// RETORNA TODOS OS AVISOS
 let getAll = callback => {
     let SQL = `SELECT * FROM avisos`;
 
@@ -18,16 +20,24 @@ let getAll = callback => {
     });
 };
 
+let newPost = (title, description, callback) => {
+    let SQL = `INSERT INTO avisos (avisosTitulo, avisosDesc) VALUES (?)`;
+
+    let params = [title, description];
+
+    db.query(SQL, params, (err, result) => {
+        if (err) {
+            throw err;
+        }
+
+        callback(result);
+    });
+};
+
 module.exports = {
     getAll,
 
-    newPost(title, description) {
-        this.posts.push({
-            id: generateID(),
-            title,
-            description
-        });
-    },
+    newPost,
     deletePost(id) {
         delete this.posts[id];
     }
