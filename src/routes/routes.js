@@ -15,19 +15,7 @@ router.get('/all', controller.getAll);
 router.post('/new', controller.newPost);
 
 // EDITA UM AVISO
-router.put('/edit/:index', bodyParser.json(), (req, res) => {
-    let { index } = req.params;
-
-    let { title } = req.body;
-
-    let { description } = req.body;
-
-    let request = db.changePost(index, title, description, function (result) {
-        console.log(result);
-
-        res.send('Aviso deletado com sucesso');
-    });
-});
+router.put('/edit/:index', controller.changePost);
 
 // DELETA UM AVISO
 router.delete('/delete/:index', bodyParser.json(), (req, res) => {
