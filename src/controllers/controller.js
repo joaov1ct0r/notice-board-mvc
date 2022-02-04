@@ -15,6 +15,18 @@ let user = {
 
             res.send('Aviso Adicionado com sucesso');
         });
+    },
+
+    changePost: function (req, res) {
+        let { index } = req.params;
+
+        let { title, description } = req.body;
+
+        db.changePost(index, title, description, function (result) {
+            console.log(result);
+
+            res.send('Aviso deletado com sucesso');
+        });
     }
 };
 
