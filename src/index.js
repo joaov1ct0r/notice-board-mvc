@@ -8,7 +8,7 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 
-const apiRoutes = require('./routes/api');
+const apiRoutes = require('./routes/routes.js');
 
 app.use('/api', bodyParser.json(), apiRoutes);
 
