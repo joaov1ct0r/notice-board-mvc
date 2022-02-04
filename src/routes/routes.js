@@ -9,11 +9,7 @@ const db = require('../model/db.js');
 const controller = require('../controllers/controller');
 
 // RETORNA TODOS OS AVISOS
-router.get('/all', (req, res) => {
-    let request = db.getAll(function (result) {
-        res.send(JSON.stringify(result));
-    });
-});
+router.get('/all', controller.getAll);
 
 // INSERE UM NOVO AVISO
 router.post('/new', bodyParser.json(), (req, res) => {
