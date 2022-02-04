@@ -6,6 +6,8 @@ const PORT = 3001;
 
 const path = require('path');
 
+const bodyParser = require('body-parser');
+
 const apiRoutes = require('./routes/api');
 
 app.use('/api', apiRoutes);
