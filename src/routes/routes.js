@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 
 const db = require('../model/db.js');
 
+const controller = require('../controllers/controller');
+
 // RETORNA TODOS OS AVISOS
 router.get('/all', (req, res) => {
     let request = db.getAll(function (result) {
