@@ -27,6 +27,16 @@ let user = {
 
             res.send('Aviso deletado com sucesso');
         });
+    },
+
+    deletePost: function (req, res) {
+        let { index } = req.params;
+
+        db.deletePost(index, function (result) {
+            console.log(result);
+
+            res.send('Aviso deletado com sucesso');
+        });
     }
 };
 
