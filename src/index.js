@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 const apiRoutes = require('./routes/api');
 
-app.use('/api', apiRoutes);
+app.use('/api', bodyParser.json(), apiRoutes);
 
 app.use('/', express.static(path.join(__dirname, 'view')));
 
