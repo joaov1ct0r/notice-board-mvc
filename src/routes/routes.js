@@ -4,7 +4,7 @@ const router = express.Router();
 
 const bodyParser = require('body-parser');
 
-const db = require('../model/posts.js');
+const db = require('../model/db.js');
 
 // RETORNA TODOS OS AVISOS
 router.get('/all', (req, res) => {
