@@ -12,17 +12,7 @@ const controller = require('../controllers/controller');
 router.get('/all', controller.getAll);
 
 // INSERE UM NOVO AVISO
-router.post('/new', bodyParser.json(), (req, res) => {
-    let { title } = req.body;
-
-    let { description } = req.body;
-
-    let request = db.newPost(title, description, function (result) {
-        console.log(result);
-
-        res.send('Aviso Adicionado com sucesso');
-    });
-});
+router.post('/new', controller.newPost);
 
 // EDITA UM AVISO
 router.put('/edit/:index', bodyParser.json(), (req, res) => {
