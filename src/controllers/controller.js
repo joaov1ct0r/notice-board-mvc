@@ -1,13 +1,13 @@
 const db = require('../model/db');
 
 let user = {
-    getAll: function (req, res) {
+    getAll(req, res) {
         db.getAll(function (result) {
             res.send(JSON.stringify(result));
         });
     },
 
-    newPost: function (req, res) {
+    newPost(req, res) {
         let { title, description } = req.body;
 
         db.newPost(title, description, function (result) {
@@ -17,7 +17,7 @@ let user = {
         });
     },
 
-    changePost: function (req, res) {
+    changePost(req, res) {
         let { index } = req.params;
 
         let { title, description } = req.body;
@@ -29,7 +29,7 @@ let user = {
         });
     },
 
-    deletePost: function (req, res) {
+    deletePost(req, res) {
         let { index } = req.params;
 
         db.deletePost(index, function (result) {
