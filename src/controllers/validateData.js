@@ -8,3 +8,5 @@ let validateNewPost = data => {
 
     return schema.validate(data);
 };
+
+let validateChangePost = data => {};
