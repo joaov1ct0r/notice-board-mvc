@@ -25,6 +25,11 @@ let user = {
     },
 
     changePost(req, res) {
+        let { error } = validateChangePost(req.body);
+
+        if (error) {
+            return res.status(400).send('Falha na autenticação');
+        }
         let { index } = req.params;
 
         let { title, description } = req.body;
