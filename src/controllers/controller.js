@@ -1,5 +1,7 @@
 const db = require('../model/db');
 
+let { validateChangePost, validateNewPost } = require('./validateData');
+
 let user = {
     getAll(req, res) {
         db.getAll(function (result) {
