@@ -9,4 +9,6 @@ let validateNewPost = data => {
     return schema.validate(data);
 };
 
-let validateChangePost = data => {};
+let validateChangePost = data => {
+    let schema = Joi.object({});
+};
