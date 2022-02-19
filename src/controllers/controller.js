@@ -10,6 +10,11 @@ let user = {
     },
 
     newPost(req, res) {
+        let { error } = validateNewPost(req.body);
+
+        if (error) {
+            return res.status(400).send('Falha na autenticação');
+        }
         let { title, description } = req.body;
 
         db.newPost(title, description, function (result) {
