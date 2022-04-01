@@ -35,22 +35,32 @@ import { validateChangePost, validateNewPost } from './validateData';
         }
     }
 
-    changePost(req, res) {
+    const changePost = async (req, res) => {
         let { error } = validateChangePost(req.body);
 
-        if (error) {
-            return res.status(400).send('Falha na autenticação');
-        }
+        if (error) return res.status(400).send('Falha na autenticação');
+
         let { index } = req.params;
 
         let { title, description } = req.body;
 
-        db.changePost(index, title, description, function (result) {
-            console.log(result);
+        try {
+            const aviso = await Avisos.update({
+                avisosTitulo: title,
+                avisosDesc: description
+            }, {
+                where: {
+                    avisosID: index
+                }
+            });
 
-            res.send('Aviso deletado com sucesso');
-        });
-    },
+            if (!aviso) return res.status(400).send('Falha ao atualizar aviso!')
+
+            res.send('Aviso atualizado com sucesso!')
+        } catch (error) {
+            throw error;
+        }
+    }
 
     deletePost(req, res) {
         let { index } = req.params;
