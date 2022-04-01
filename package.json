@@ -6,12 +6,19 @@
   "scripts": {
     "start": "node src/index.js"
   },
-  "keywords": ["html5", "css3", "javascript", "nodejs", "express", "sequelize", "dotenv"],
+  "keywords": [
+    "html5",
+    "css3",
+    "javascript",
+    "nodejs",
+    "express",
+    "sequelize",
+    "dotenv"
+  ],
   "author": "github.com/joaov1ct0r",
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "body-parser": "^1.19.0",
     "dotenv": "^13.0.0",
     "express": "^4.17.1",
     "mysql2": "^2.3.3"
