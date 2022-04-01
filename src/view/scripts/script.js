@@ -62,7 +62,7 @@ salvarButton.addEventListener('click', async () => {
 
 let divPosts = document.getElementById('posts');
 
-divPosts.addEventListener('click', event => {
+divPosts.addEventListener('click', async event => {
     if (event.target.tagName === 'BUTTON') {
         const button = event.target;
 
@@ -79,13 +79,13 @@ divPosts.addEventListener('click', event => {
                 headers: { 'Content-type': 'application/json; charset=UTF-8' }
             };
 
-            fetch(url, options).then(res => {
-                console.log(res);
-            });
+            const response = await fetch(url, options);
 
-            divPosts.removeChild(postDiv);
+            if (response.status === 200) {
+                divPosts.removeChild(postDiv);
 
-            updatePosts();
+                updatePosts();
+            }
         } else if (button.textContent === 'Editar') {
             let title = document.createElement('input');
 
