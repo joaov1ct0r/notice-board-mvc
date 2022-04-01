@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function updatePosts() {
-    const url = 'http://localhost:3001/api/all';
+    const url = 'http://localhost:3000/api/all';
 
     const response = await fetch(url);
 
@@ -39,7 +39,7 @@ salvarButton.addEventListener('click', async () => {
 
     let post = { title, description };
 
-    const url = 'http://localhost:3001/api/new';
+    const url = 'http://localhost:3000/api/new';
 
     const options = {
         method: 'POST',
@@ -71,7 +71,7 @@ divPosts.addEventListener('click', async event => {
         const divPosts = postDiv.parentNode;
 
         if (button.textContent === 'Remover') {
-            const url = `http://localhost:3001/api/delete/${postDiv.id}`;
+            const url = `http://localhost:3000/api/delete/${postDiv.id}`;
 
             const options = {
                 method: 'DELETE',
@@ -112,7 +112,7 @@ divPosts.addEventListener('click', async event => {
             });
 
             async function editPost(index, title, description) {
-                const url = `http://localhost:3001/api/edit/${postDiv.id}`;
+                const url = `http://localhost:3000/api/edit/${postDiv.id}`;
 
                 const options = {
                     method: 'PUT',
