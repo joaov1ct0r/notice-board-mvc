@@ -1,19 +1,20 @@
-const express = require('express');
+import express from 'express';
 
-const router = express.Router();
+import {
+    getAll,
+    newPost,
+    changePost,
+    deletePost
+} from '../controllers/userController.js';
 
-const controller = require('../controllers/controller');
+const userRouter = express.Router();
 
-// RETORNA TODOS OS AVISOS
-router.get('/all', controller.getAll);
+userRouter.get('/all', getAll);
 
-// INSERE UM NOVO AVISO
-router.post('/new', controller.newPost);
+userRouter.post('/new', newPost);
 
-// EDITA UM AVISO
-router.put('/edit/:index', controller.changePost);
+userRouter.put('/edit/:index', changePost);
 
-// DELETA UM AVISO
-router.delete('/delete/:index', controller.deletePost);
+userRouter.delete('/delete/:index', deletePost);
 
-module.exports = router;
+export default userRouter;
