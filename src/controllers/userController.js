@@ -6,7 +6,7 @@ import { validateChangePost, validateNewPost } from './validateData';
         try {
             const avisos = await Avisos.findAll();
 
-            if(!avisos) return res.json({msg: 'Falha ao obter dados!'});
+            if(!avisos) return res.status(400).send('Falha ao obter dados!');
 
             res.send(JSON.stringify(avisos));
         } catch (error) {
@@ -14,13 +14,26 @@ import { validateChangePost, validateNewPost } from './validateData';
         }
     }
 
-    newPost(req, res) {
+    const newPost = async (req, res) => {
         let { error } = validateNewPost(req.body);
 
-        if (error) {
-            return res.status(400).send('Falha na autenticação');
-        }
+        if (error) return res.status(400).send('Falha na autenticação');
+
         let { title, description } = req.body;
+
+        try {
+            const aviso = await Avisos.create({
+                avisosTitulo: title,
+                avisosDesc: description
+            })
+
+            if(!aviso) return res.status(400).send('Falha ao adicionar novo aviso!')
+
+            res.send("Aviso adicionado com sucesso!")
+        } catch (error) {
+            throw error;
+        }
+        
 
         db.newPost(title, description, function (result) {
             console.log(result);
