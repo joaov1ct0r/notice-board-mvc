@@ -17,5 +17,5 @@ app.use('/api', express.json(), userRoutes);
 app.use('/', express.static(path.join(__dirname, 'view')));
 
 app.listen(process.env.SERVER_PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+    console.log('Server running');
 });
