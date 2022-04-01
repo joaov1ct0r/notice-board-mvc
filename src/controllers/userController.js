@@ -1,6 +1,6 @@
 import Avisos from '../model/userModel.js';
 
-import { validateChangePost, validateNewPost } from './validateData';
+import { validateChangePost, validateNewPost } from './validateData.js';
 
 const getAll = async (req, res) => {
     try {
