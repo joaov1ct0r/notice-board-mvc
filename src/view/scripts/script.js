@@ -2,34 +2,32 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePosts();
 });
 
-function updatePosts() {
+async function updatePosts() {
     const url = 'http://localhost:3001/api/all';
 
-    fetch(url)
-        .then(res => {
-            let data = res.json();
+    const response = await fetch(url);
 
-            return data;
-        })
-        .then(data => {
-            let postElements = '';
+    if (response.status === 200) {
+        const data = await response.json();
 
-            let posts = JSON.parse(JSON.stringify(data));
+        let postElements = '';
 
-            posts.forEach(post => {
-                let postElement = `<div id="${post.avisosID}" class="card mb-5">
+        let posts = JSON.parse(JSON.stringify(data));
+
+        posts.forEach(post => {
+            let postElement = `<div id="${post.avisosID}" class="card mb-5">
                                               <h5 class="card-title">${post.avisosTitulo}</h5>
                                               <p>${post.avisosDesc}</p>
                                               <button>Editar</button><button>Remover</button>
                                    </div>`;
 
-                postElements += postElement;
-            });
-
-            let divPosts = document.getElementById('posts');
-
-            divPosts.innerHTML = postElements;
+            postElements += postElement;
         });
+
+        let divPosts = document.getElementById('posts');
+
+        divPosts.innerHTML = postElements;
+    } else alert('Falha ao obter dados!');
 }
 
 const salvarButton = document.getElementById('salvarButton');
