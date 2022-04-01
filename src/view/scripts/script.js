@@ -32,9 +32,7 @@ async function updatePosts() {
 
 const salvarButton = document.getElementById('salvarButton');
 
-salvarButton.addEventListener('click', newPost);
-
-async function newPost() {
+salvarButton.addEventListener('click', async () => {
     let title = document.getElementById('title').value;
 
     let description = document.getElementById('desc').value;
@@ -60,7 +58,7 @@ async function newPost() {
 
         document.getElementById('desc').value = '';
     } else alert('Falha ao adicionar novo aviso!');
-}
+});
 
 let divPosts = document.getElementById('posts');
 
