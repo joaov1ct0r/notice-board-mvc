@@ -1,19 +1,21 @@
-const express = require('express');
+import 'dotenv/config';
 
-const app = express();
+import express from 'express';
 
-const PORT = 3001;
+import userRoutes from './routes/userRoutes.js';
 
-const path = require('path');
+import path from 'path';
 
-const bodyParser = require('body-parser');
+import { fileURLToPath } from 'url';
 
-const apiRoutes = require('./routes/routes.js');
+const __filename = fileURLToPath(import.meta.url);
 
-app.use('/api', bodyParser.json(), apiRoutes);
+const __dirname = path.dirname(__filename);
+
+app.use('/api', express.json(), userRoutes);
 
 app.use('/', express.static(path.join(__dirname, 'view')));
 
-app.listen(PORT, () => {
+app.listen(process.env.SERVER_PORT, () => {
     console.log(`Server running on port: ${PORT}`);
 });
