@@ -34,7 +34,7 @@ const salvarButton = document.getElementById('salvarButton');
 
 salvarButton.addEventListener('click', newPost);
 
-function newPost() {
+async function newPost() {
     let title = document.getElementById('title').value;
 
     let description = document.getElementById('desc').value;
@@ -49,15 +49,17 @@ function newPost() {
         headers: { 'Content-type': 'application/json; charset=UTF-8' }
     };
 
-    fetch(url, options).then(res => {
-        console.log(res);
+    const response = await fetch(url, options);
+
+    if (response.status === 200) {
+        alert('Aviso adicionado com sucesso!');
 
         updatePosts();
 
         document.getElementById('title').value = '';
 
         document.getElementById('desc').value = '';
-    });
+    } else alert('Falha ao adicionar novo aviso!');
 }
 
 let divPosts = document.getElementById('posts');
