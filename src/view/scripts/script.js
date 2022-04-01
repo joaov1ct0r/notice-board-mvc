@@ -111,12 +111,8 @@ divPosts.addEventListener('click', async event => {
                 editPost(postDiv.id, title.value, description.value);
             });
 
-            function editPost(index, title, description) {
-                const url = `http://localhost:3001/api/edit/${index}`;
-
-                // const title = title.value;
-
-                // const desc = desc.value;
+            async function editPost(index, title, description) {
+                const url = `http://localhost:3001/api/edit/${postDiv.id}`;
 
                 const options = {
                     method: 'PUT',
@@ -126,11 +122,13 @@ divPosts.addEventListener('click', async event => {
                     }
                 };
 
-                fetch(url, options).then(res => {
-                    console.log(res);
+                const response = await fetch(url, options);
+
+                if (response.status === 200) {
+                    alert('Aviso editado com sucesso!');
 
                     updatePosts();
-                });
+                } else alert('Falha ao editar aviso!');
             }
         }
     }
