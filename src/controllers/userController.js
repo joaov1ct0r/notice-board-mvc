@@ -33,14 +33,7 @@ import { validateChangePost, validateNewPost } from './validateData';
         } catch (error) {
             throw error;
         }
-        
-
-        db.newPost(title, description, function (result) {
-            console.log(result);
-
-            res.send('Aviso Adicionado com sucesso');
-        });
-    },
+    }
 
     changePost(req, res) {
         let { error } = validateChangePost(req.body);
