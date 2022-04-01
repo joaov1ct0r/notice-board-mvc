@@ -12,14 +12,17 @@
   <li>Express</li>
   <p><code>npm install express</code></p>
   <br>
-  <li>path</li>
-  <p><code>require("path")</code></p>
-  <br>
-  <li>body-parser</li>
-  <p><code>npm install body-parser</code></p>
-  <br>
   <li>MySQL2</li>
-  <p><code>npm install mysql2</code></p>
+  <p><code>npm install --save mysql2</code></p>
+  <br>
+  <li>Sequelize</li>
+  <p><code>npm install sequelize</code></p>
+  <br>
+  <li>dotenv</li>
+  <p><code>npm install dotenv</code></p>
+  <br>
+  <li>@Hapi/Joi</li>
+  <p><code>npm install @hapi/joi</code></p>
   <br>
 </ul>
 
@@ -40,24 +43,42 @@ Quando finalizado a função updatePosts do script.js é executada, essa funçã
 <h2>MODO DE USO</h2>
 
 <h3>GIT</h3>
+<hr>
 
 <p>FAÇA O DOWNLOADS DO REPOSITORIO OU USE:<br><code>git clone git@github.com:joaov1ct0r/muralAvisos.git</code></p>
 
+<h3>VARIAVEIS DE AMBIENTE</h3>
+<hr>
+
+<p>CRIE UM ARQUIVO .env NO DIRETORIO PRINCIPAL DO PROJETO E ALTERE O VALOR DAS VARIAVEIS PARA SEUS DADOS</p>
+
+<ul>
+  <li>SERVER_PORT = PORTA DO SEU SERVIDOR</li>
+  <li>DB_HOST = HOST DO SEU DB</li>
+  <li>DB_USER = USUARIO DO SEU DB</li>
+  <li>DB_PASSWORD = SENHA DO SEU DB</li>
+  <li>DB_DATABASE = NOME DO SEU DB</li>
+  <li>DB_PORT = PORTA DO SEU DB</li>
+</ul>
+
+<h3>DEPENDENCIAS</h3>
+<hr>
+
+<p>INSTALE TODAS AS DEPENDENCIAS COM O COMANDO: <code>npm install</code></p>
+
 <h3>MySQL</h3>
+<hr>
 
 <p>INICIE O SEU SERVIDOR MYSQL COM O COMANDO:<br><code>sudo systemctl start mysql</code></p>
 
-<p>CRIE UM BANCO DE DADOS ATRAVES DO TERMINAL OU COM OUTRO GERENCIADOR DE BANCO DE DADOS, COM O NOME DE: muralAvisos COM O COMANDO:<br><code>CREATE DATABASE muralAvisos;</code></p>
-
-<p>APOS CRIAR O BANCO DE DADOS USE-O COM O COMANDO: <br><code>USE muralAvisos;</code>
-
-<p>CRIE UMA TABLE COM O NOME DE: avisos COM O COMANDO:<br><code>CREATE TABLE avisos (avisosID INT NOT NULL AUTO_INCREMENT, avisosTitulo VARCHAR(250) NOT NULL, avisosDesc VARCHAR(250) NOT NULL, PRIMARY KEY(avisosID);</code></p>
+<p>CRIE UM BANCO DE DADOS ATRAVES DO TERMINAL OU COM OUTRO GERENCIADOR DE BANCO DE DADOS MYSQL, COM O NOME DE: muralAvisos</p>
 
 <h3>SERVER</h3>
+<hr>
 
-<p>APOS TER OS ARQUIVOS EM SUA MAQUINA INICIE O SERVIDOR WEB NO SEU TERMINAL COM O COMANDO:<br><code>node src/index.js</code></p>
+<p>APOS TER OS ARQUIVOS EM SUA MAQUINA INICIE O SERVIDOR WEB NO SEU TERMINAL COM O COMANDO:<br><code>npm start</code></p>
 
-<p>APOS ISSO ABRA O NAVEGADOR E ENTRE COM A SEGUINTE URL:<br><code>http://localhost:3001/</code></p>
+<p>APOS ISSO ABRA O NAVEGADOR E ENTRE COM A SEGUINTE URL:<br><code>http://localhost:3000/</code></p>
 
 <p>A PAGINA PARA A LISTA DE TAREFAS SERA ABERTA E ESTARA PRONTA PARA CRIAR, ARMAZENAR, EDITAR E EXCLUIR SUAS TAREFAS</p>
 
