@@ -1,4 +1,4 @@
-const db = require('../model/db');
+const db = require('../model/userModel');
 
 let { validateChangePost, validateNewPost } = require('./validateData');
 
