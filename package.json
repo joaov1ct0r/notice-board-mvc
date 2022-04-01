@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Mural de avisos feito com arquitetura MVC, Front-end feito em HTML, Bootstrap, Javascript e Back-end em NodeJS(Express) validando dados via @Hapi/Joi e armazenandos os dados no banco de dados MySQL via Sequelize",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node src/index.js"
   },
