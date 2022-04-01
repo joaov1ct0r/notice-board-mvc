@@ -1,13 +1,18 @@
-const db = require('../model/userModel');
+import Avisos from '../model/userModel.js';
 
-let { validateChangePost, validateNewPost } = require('./validateData');
+import { validateChangePost, validateNewPost } from './validateData';
 
-let user = {
-    getAll(req, res) {
-        db.getAll(function (result) {
-            res.send(JSON.stringify(result));
-        });
-    },
+    const getAll = async (req, res) => {
+        try {
+            const avisos = await Avisos.findAll();
+
+            if(!avisos) return res.json({msg: 'Falha ao obter dados!'});
+
+            res.send(JSON.stringify(avisos));
+        } catch (error) {
+            throw error;
+        }
+    }
 
     newPost(req, res) {
         let { error } = validateNewPost(req.body);
@@ -50,6 +55,5 @@ let user = {
             res.send('Aviso deletado com sucesso');
         });
     }
-};
 
 module.exports = user;
