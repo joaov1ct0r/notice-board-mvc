@@ -18,7 +18,4 @@ let validateChangePost = data => {
     return schema.validate(data);
 };
 
-module.exports = {
-    validateNewPost,
-    validateChangePost
-};
+export { validateNewPost, validateChangePost };
