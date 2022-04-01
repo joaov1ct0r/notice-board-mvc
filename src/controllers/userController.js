@@ -84,4 +84,4 @@ const deletePost = async (req, res) => {
     }
 };
 
-module.exports = user;
+export { newPost, deletePost, changePost, getAll };
